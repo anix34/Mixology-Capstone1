@@ -98,10 +98,10 @@ class User(db.Model, UserMixin):
         Return user if valid; else return False.
         """
 
-        u = User.query.filter_by(username=username).first()
+        user = User.query.filter_by(username=username).first()
 
-        if u and bcrypt.check_password_hash(u.password, pwd):
+        if users and bcrypt.check_password_hash(users.password, pwd):
             # return user instance
-            return u
+            return users
         else:
             return False
